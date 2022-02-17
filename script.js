@@ -14,6 +14,8 @@ let pokemonDiv = document.querySelector(".pokemon-image");
 
 let score = 0;
 
+let currentPokemon = shufflePokemon(pokemon);
+
 const scoreDisplay = document.querySelector(".score");
 
 const submitButton = document.querySelector("#submit");
@@ -25,10 +27,12 @@ updateScore(score);
 submitButton.addEventListener("click", (e) => {
     if (
         submitAnswer.value.toLowerCase() ===
-        pokemon[i].name.english.toLowerCase()
+        currentPokemon.name.english.toLowerCase()
     ) {
         score++;
         updateScore(score);
+        currentPokemon = shufflePokemon(pokemon);
+        displayPokemon(currentPokemon);
 
         //adds 1 to your score
         //after a few secs moves on to next pokemon
@@ -36,19 +40,25 @@ submitButton.addEventListener("click", (e) => {
     }
 });
 
-//create a variable called i that finds a random number between 1-151 (the length of the pokemon array)
-
-i = Math.floor(Math.random() * pokemon.length);
-
 //adds pokemon[i].name.english to inner HTML of the div
 // pokemon[i] is whatever pokemon from the array is at that random number
 //.name.english gets the specifc name value as there are several in the objects
 
-pokemonDiv.innerHTML += pokemon[i].name.english;
+displayPokemon(currentPokemon);
 
 //store what is put in the form and compare it against the correct answer
 //don't refresh page right away
+//clear text box after each correct/incorrect item
 
 function updateScore(score) {
     scoreDisplay.innerHTML = "score:" + score;
+}
+
+function shufflePokemon(pokemonArray) {
+    i = Math.floor(Math.random() * pokemonArray.length);
+    return pokemonArray[i];
+}
+
+function displayPokemon(nextPokemon) {
+    pokemonDiv.innerHTML = nextPokemon.name.english;
 }
