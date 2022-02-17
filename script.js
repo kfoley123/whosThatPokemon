@@ -23,10 +23,13 @@ const submitAnswer = document.querySelector("#answer");
 updateScore(score);
 
 submitButton.addEventListener("click", (e) => {
-    if (submitAnswer.value === pokemon[i].name.english) {
+    if (
+        submitAnswer.value.toLowerCase() ===
+        pokemon[i].name.english.toLowerCase()
+    ) {
         score++;
         updateScore(score);
-        // tells you that the answer is correct
+
         //adds 1 to your score
         //after a few secs moves on to next pokemon
     } else {
