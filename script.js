@@ -11,7 +11,27 @@ console.log(pokemon[0].name);
 
 // creates a var that stores the HTML onject that has the class of pokemon-image
 let pokemonDiv = document.querySelector(".pokemon-image");
-console.log(pokemonDiv);
+
+let score = 0;
+
+const scoreDisplay = document.querySelector(".score");
+
+const submitButton = document.querySelector("#submit");
+
+const submitAnswer = document.querySelector("#answer");
+
+updateScore(score);
+
+submitButton.addEventListener("click", (e) => {
+    if (submitAnswer.value === pokemon[i].name.english) {
+        score++;
+        updateScore(score);
+        // tells you that the answer is correct
+        //adds 1 to your score
+        //after a few secs moves on to next pokemon
+    } else {
+    }
+});
 
 //create a variable called i that finds a random number between 1-151 (the length of the pokemon array)
 
@@ -22,3 +42,10 @@ i = Math.floor(Math.random() * pokemon.length);
 //.name.english gets the specifc name value as there are several in the objects
 
 pokemonDiv.innerHTML += pokemon[i].name.english;
+
+//store what is put in the form and compare it against the correct answer
+//don't refresh page right away
+
+function updateScore(score) {
+    scoreDisplay.innerHTML = "score:" + score;
+}
