@@ -18,7 +18,9 @@ const scoreDisplay = document.querySelector(".score");
 const submitButton = document.querySelector("#submit");
 
 const skipButton = document.querySelector("#skip");
-console.log(skipButton);
+
+const resetButton = document.querySelector("#reset");
+console.log(resetButton);
 
 const submitAnswer = document.querySelector("#answer");
 
@@ -26,6 +28,12 @@ updateScore(score);
 
 skipButton.addEventListener("click", (e) => {
     currentPokemon = nextPokemon(pokemon, currentPokemon);
+});
+
+resetButton.addEventListener("click", (e) => {
+    currentPokemon = nextPokemon(pokemon, currentPokemon);
+    score = 0;
+    updateScore(score);
 });
 
 submitButton.addEventListener("click", (e) => {
