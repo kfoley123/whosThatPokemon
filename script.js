@@ -4,8 +4,6 @@
 //hint display a hint to the name of the pokemon
 //reset resets score, resets kept track of pokemon
 
-console.log(pokemon[0].name);
-
 // creates a var that stores the HTML onject that has the class of pokemon-image
 let pokemonDiv = document.querySelector(".pokemon-image");
 
@@ -25,7 +23,8 @@ const hintButton = document.getElementById("hintbutton");
 
 const submitAnswer = document.getElementById("answer");
 
-updateScore(score);
+displayScore(score);
+displayPokemon(currentPokemon);
 
 skipButton.addEventListener("click", (e) => {
     currentPokemon = nextPokemon(pokemon, currentPokemon);
@@ -34,11 +33,10 @@ skipButton.addEventListener("click", (e) => {
 resetButton.addEventListener("click", (e) => {
     currentPokemon = nextPokemon(pokemon, currentPokemon);
     score = 0;
-    updateScore(score);
+    displayScore(score);
 });
 
 hintButton.addEventListener("click", (e) => {
-    console.log(currentPokemon.type.join(", "));
     var hintText = document.getElementById("hint");
     hintText.classList.toggle("show");
     hintText.innerHTML = currentPokemon.type.join(", ");
@@ -50,29 +48,16 @@ submitButton.addEventListener("click", (e) => {
         currentPokemon.name.english.toLowerCase()
     ) {
         score++;
-        updateScore(score);
+        displayScore(score);
         currentPokemon = nextPokemon(pokemon, currentPokemon);
-
-        //adds 1 to your score
-        //after a few secs moves on to next pokemon
     } else {
         score--;
-        updateScore(score);
+        displayScore(score);
         currentPokemon = nextPokemon(pokemon, currentPokemon);
     }
 });
 
-//adds pokemon[i].name.english to inner HTML of the div
-// pokemon[i] is whatever pokemon from the array is at that random number
-//.name.english gets the specifc name value as there are several in the objects
-
-displayPokemon(currentPokemon);
-
-//store what is put in the form and compare it against the correct answer
-//don't refresh page right away
-//clear text box after each correct/incorrect item
-
-function updateScore(score) {
+function displayScore(score) {
     scoreDisplay.innerHTML = "score:" + score;
 }
 
