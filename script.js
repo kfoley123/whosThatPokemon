@@ -1,8 +1,5 @@
 //display a pokemon image
-//take the users input
-//save it and then compare it against the correct answer
-//if its right, score goes up and shows you the pokemon & name, adds to "correct array"
-//if wrong score goes down and it shows you poekmon & name removes from remaining pokemon array
+//fix issue with form submit on enter
 //skip goes to next pokemon
 //hint display a hint to the name of the pokemon
 //reset resets score, resets kept track of pokemon
@@ -33,10 +30,16 @@ submitButton.addEventListener("click", (e) => {
         updateScore(score);
         currentPokemon = shufflePokemon(pokemon);
         displayPokemon(currentPokemon);
+        submitAnswer.value = "";
 
         //adds 1 to your score
         //after a few secs moves on to next pokemon
     } else {
+        score--;
+        updateScore(score);
+        currentPokemon = shufflePokemon(pokemon);
+        displayPokemon(currentPokemon);
+        submitAnswer.value = "";
     }
 });
 
