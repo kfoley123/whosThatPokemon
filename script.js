@@ -15,14 +15,15 @@ let currentPokemon = shufflePokemon(pokemon);
 
 const scoreDisplay = document.querySelector(".score");
 
-const submitButton = document.querySelector("#submit");
+const submitButton = document.getElementById("submit");
 
-const skipButton = document.querySelector("#skip");
+const skipButton = document.getElementById("skip");
 
-const resetButton = document.querySelector("#reset");
-console.log(resetButton);
+const resetButton = document.getElementById("reset");
 
-const submitAnswer = document.querySelector("#answer");
+const hintButton = document.getElementById("hintbutton");
+
+const submitAnswer = document.getElementById("answer");
 
 updateScore(score);
 
@@ -34,6 +35,13 @@ resetButton.addEventListener("click", (e) => {
     currentPokemon = nextPokemon(pokemon, currentPokemon);
     score = 0;
     updateScore(score);
+});
+
+hintButton.addEventListener("click", (e) => {
+    console.log(currentPokemon.type.join(", "));
+    var hintText = document.getElementById("hint");
+    hintText.classList.toggle("show");
+    hintText.innerHTML = currentPokemon.type.join(", ");
 });
 
 submitButton.addEventListener("click", (e) => {

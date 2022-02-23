@@ -1,0 +1,7 @@
+.hint-text {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+}
