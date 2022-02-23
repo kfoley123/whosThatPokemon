@@ -17,9 +17,16 @@ const scoreDisplay = document.querySelector(".score");
 
 const submitButton = document.querySelector("#submit");
 
+const skipButton = document.querySelector("#skip");
+console.log(skipButton);
+
 const submitAnswer = document.querySelector("#answer");
 
 updateScore(score);
+
+skipButton.addEventListener("click", (e) => {
+    currentPokemon = nextPokemon(pokemon, currentPokemon);
+});
 
 submitButton.addEventListener("click", (e) => {
     if (
@@ -28,18 +35,14 @@ submitButton.addEventListener("click", (e) => {
     ) {
         score++;
         updateScore(score);
-        currentPokemon = shufflePokemon(pokemon);
-        displayPokemon(currentPokemon);
-        submitAnswer.value = "";
+        currentPokemon = nextPokemon(pokemon, currentPokemon);
 
         //adds 1 to your score
         //after a few secs moves on to next pokemon
     } else {
         score--;
         updateScore(score);
-        currentPokemon = shufflePokemon(pokemon);
-        displayPokemon(currentPokemon);
-        submitAnswer.value = "";
+        currentPokemon = nextPokemon(pokemon, currentPokemon);
     }
 });
 
@@ -64,4 +67,11 @@ function shufflePokemon(pokemonArray) {
 
 function displayPokemon(nextPokemon) {
     pokemonDiv.innerHTML = nextPokemon.name.english;
+}
+
+function nextPokemon(pokemonArray, currentPokemon) {
+    currentPokemon = shufflePokemon(pokemonArray);
+    displayPokemon(currentPokemon);
+    submitAnswer.value = "";
+    return currentPokemon;
 }
