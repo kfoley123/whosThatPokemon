@@ -1,10 +1,10 @@
 //display a pokemon image
 //fix issue with form submit on enter
 //skip goes to next pokemon
-//hint display a hint to the name of the pokemon
-//reset resets score, resets kept track of pokemon
 
-// creates a var that stores the HTML onject that has the class of pokemon-image
+// resets kept track of pokemon
+
+// creates a var that stores the HTML object that has the class of pokemon-image
 let pokemonDiv = document.querySelector(".pokemon-image");
 
 let score = 0;
@@ -40,6 +40,23 @@ hintButton.addEventListener("click", (e) => {
     var hintText = document.getElementById("hint");
     hintText.classList.toggle("show");
     hintText.innerHTML = currentPokemon.type.join(", ");
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        if (
+            submitAnswer.value.toLowerCase() ===
+            currentPokemon.name.english.toLowerCase()
+        ) {
+            score++;
+            displayScore(score);
+            currentPokemon = nextPokemon(pokemon, currentPokemon);
+        } else {
+            score--;
+            displayScore(score);
+            currentPokemon = nextPokemon(pokemon, currentPokemon);
+        }
+    }
 });
 
 submitButton.addEventListener("click", (e) => {
