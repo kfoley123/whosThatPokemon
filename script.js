@@ -1,10 +1,3 @@
-//display a pokemon image
-//fix issue with form submit on enter
-//skip goes to next pokemon
-
-// resets kept track of pokemon
-
-// creates a var that stores the HTML object that has the class of pokemon-image
 let pokemonDiv = document.querySelector(".pokemon-image");
 
 let score = 0;
@@ -108,5 +101,3 @@ function nextPokemon(pokemonArray, currentPokemon) {
     submitAnswer.value = "";
     return currentPokemon;
 }
-
-function revealPokemon() {}
