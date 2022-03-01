@@ -13,3 +13,18 @@ img {
 .correctGuess {
     filter: none;
 }
+
+button {
+    background-color: #000000;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 12px;
+}
+
+body {
+    margin: auto;
+    width: 400px;
+}
