@@ -26,6 +26,9 @@ const submitAnswer = document.getElementById("answer");
 displayScore(score);
 displayPokemon(currentPokemon);
 
+let pokemonImage = document.getElementById("pokemonImage");
+console.log(pokemonImage);
+
 skipButton.addEventListener("click", (e) => {
     currentPokemon = nextPokemon(pokemon, currentPokemon);
 });
@@ -48,13 +51,19 @@ document.addEventListener("keydown", (e) => {
             submitAnswer.value.toLowerCase() ===
             currentPokemon.name.english.toLowerCase()
         ) {
+            pokemonImage.classList.toggle("correctGuess");
             score++;
             displayScore(score);
-            currentPokemon = nextPokemon(pokemon, currentPokemon);
+            setTimeout(() => {
+                currentPokemon = nextPokemon(pokemon, currentPokemon);
+            }, 1500);
         } else {
+            pokemonImage.classList.toggle("correctGuess");
             score--;
             displayScore(score);
-            currentPokemon = nextPokemon(pokemon, currentPokemon);
+            setTimeout(() => {
+                currentPokemon = nextPokemon(pokemon, currentPokemon);
+            }, 1500);
         }
     }
 });
@@ -64,13 +73,19 @@ submitButton.addEventListener("click", (e) => {
         submitAnswer.value.toLowerCase() ===
         currentPokemon.name.english.toLowerCase()
     ) {
+        pokemonImage.classList.toggle("correctGuess");
         score++;
         displayScore(score);
-        currentPokemon = nextPokemon(pokemon, currentPokemon);
+        setTimeout(() => {
+            currentPokemon = nextPokemon(pokemon, currentPokemon);
+        }, 1500);
     } else {
+        pokemonImage.classList.toggle("correctGuess");
         score--;
         displayScore(score);
-        currentPokemon = nextPokemon(pokemon, currentPokemon);
+        setTimeout(() => {
+            currentPokemon = nextPokemon(pokemon, currentPokemon);
+        }, 1500);
     }
 });
 
@@ -84,7 +99,7 @@ function shufflePokemon(pokemonArray) {
 }
 
 function displayPokemon(nextPokemon) {
-    pokemonDiv.innerHTML = `<img src="${nextPokemon.image}" width="300" height="300">`;
+    pokemonDiv.innerHTML = `<img src="${nextPokemon.image}" width="300" height="300" id="pokemonImage">`;
 }
 
 function nextPokemon(pokemonArray, currentPokemon) {
@@ -93,3 +108,5 @@ function nextPokemon(pokemonArray, currentPokemon) {
     submitAnswer.value = "";
     return currentPokemon;
 }
+
+function revealPokemon() {}

@@ -9,3 +9,7 @@
 img {
     filter: blur(12px);
 }
+
+.correctGuess {
+    filter: none;
+}
