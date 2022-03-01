@@ -84,7 +84,7 @@ function shufflePokemon(pokemonArray) {
 }
 
 function displayPokemon(nextPokemon) {
-    pokemonDiv.innerHTML = nextPokemon.name.english;
+    pokemonDiv.innerHTML = `<img src="${nextPokemon.image}" width="300" height="300">`;
 }
 
 function nextPokemon(pokemonArray, currentPokemon) {
