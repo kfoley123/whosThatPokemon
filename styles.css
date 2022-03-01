@@ -5,3 +5,7 @@
 .show {
     visibility: visible;
 }
+
+img {
+    filter: blur(12px);
+}
