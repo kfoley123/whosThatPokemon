@@ -1,4 +1,6 @@
-let pokemonDiv = document.querySelector(".pokemon-image");
+//TODO:  doesn't unblur on second guess
+
+let pokemonDiv = document.querySelector(".pokemon-display");
 
 let score = 0;
 
